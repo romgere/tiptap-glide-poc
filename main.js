@@ -9,6 +9,9 @@ import content from './initial-content.js';
 import Image from '@tiptap/extension-image'
 import FileHandler from './file-handler-plugins.js';
 import BubbleMenu from '@tiptap/extension-bubble-menu'
+import FontFamily from '@tiptap/extension-font-family'
+import TaskItem from '@tiptap/extension-task-item'
+import TaskList from '@tiptap/extension-task-list'
 
 import WCNode from './wc-node.js';
 
@@ -18,11 +21,14 @@ const editor = new Editor({
     StarterKit,
     Color,
     TextStyle,
+    FontFamily,
     TextAlign.configure({
       types: ['heading', 'paragraph'],
     }),
     WCNode,
     Image,
+    TaskItem,
+    TaskList,
     FileHandler.configure({
       allowedMimeTypes: [
         'image/jpeg',
@@ -145,6 +151,13 @@ function updateToolBarState(editor) {
     const btn = document.getElementById(`align-${align}-btn`);
     btn.setAttribute('variant', editor.isActive({ textAlign: align }) ? 'primary' : 'default');
   }
+
+  const fontSelect = document.getElementById('font-select')
+  const fontFamily = editor.getAttributes('textStyle').fontFamily ?? null;
+  fontSelect.value = fontFamily ? fontFamily.replace('_', ' ') : 'default';
+  
+
+  // editor.isActive('textStyle', { fontFamily: 'cursive' }) }
 }
 
 document.getElementById('bold-btn').addEventListener('click', function () {
@@ -249,3 +262,12 @@ function attachBubbleButtonEvent() {
 
   isBubbleInit = true;
 }
+
+document.getElementById('font-select').addEventListener('sl-change', function (e) {
+  const value = e.target.value;
+  if (value !== 'default') {
+    editor.chain().focus().setFontFamily(value).run()
+  } else {
+    editor.chain().focus().unsetFontFamily().run()
+  }
+});
