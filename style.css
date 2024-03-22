@@ -1,0 +1,29 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.active {
+  font-weight: bold;
+  color: blue;
+}
+
+.element {
+  margin-top: 16px;
+}
+
+.element > div {
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid gray;
+  border-radius: 4px;
+}
+
+[data-my-custom-element].ProseMirror-selectednode {
+  border: 1px solid blue;
+}
