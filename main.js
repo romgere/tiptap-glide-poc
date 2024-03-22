@@ -14,6 +14,12 @@ import FontFamily from '@tiptap/extension-font-family'
 import TaskItem from '@tiptap/extension-task-item'
 import TaskList from '@tiptap/extension-task-list'
 
+import Table from '@tiptap/extension-table'
+import TableCell from '@tiptap/extension-table-cell'
+import TableHeader from '@tiptap/extension-table-header'
+import TableRow from '@tiptap/extension-table-row'
+import Gapcursor from '@tiptap/extension-gapcursor'
+
 import WCNode from './wc-node.js';
 
 const editor = new Editor({
@@ -30,6 +36,13 @@ const editor = new Editor({
     Image,
     TaskItem,
     TaskList,
+    Table.configure({
+      resizable: true,
+    }),
+    TableCell,
+    TableHeader,
+    TableRow,
+    Gapcursor,
     FileHandler.configure({
       allowedMimeTypes: [
         'image/jpeg',
@@ -79,7 +92,7 @@ const editor = new Editor({
       tippyOptions: {
         onShown: attachBubbleButtonEvent
       },
-      shouldShow: ({ editor}) =>  !(editor.isActive('wc') || editor.isActive('image')),
+      shouldShow: ({ editor}) =>  !(editor.isActive('wc') || editor.isActive('image') || editor.isActive('table')),
     }),
     BubbleMenu.configure({
       element: document.querySelector('.bubblemenu2'),
@@ -88,6 +101,13 @@ const editor = new Editor({
     BubbleMenu.configure({
       element: document.querySelector('.bubblemenu3'),
       shouldShow: ({ editor}) =>  editor.isActive('wc'),
+    }),
+    BubbleMenu.configure({
+      element: document.querySelector('.bubblemenu4'),
+      shouldShow: ({ editor}) =>  editor.isActive('table'),
+      tippyOptions: {
+        onShown: attachTableBubbleMenu
+      },      
     }),
 
     
@@ -264,6 +284,32 @@ function attachBubbleButtonEvent() {
   });
 
   isBubbleInit = true;
+}
+let isTableBubbleInit = false;
+
+function attachTableBubbleMenu() {
+  if( isTableBubbleInit) {
+    return;
+  }
+
+
+  document.getElementById('add-row-before').addEventListener('click', function () {
+    editor.commands.addRowBefore()
+  });
+  document.getElementById('add-row-after').addEventListener('click', function () {
+    editor.commands.addRowAfter()
+  });
+
+  document.getElementById('add-col-before').addEventListener('click', function () {
+    editor.commands.addColumnBefore()
+  });
+  document.getElementById('add-col-after').addEventListener('click', function () {
+    editor.commands.addColumnAfter()
+  });
+  
+  
+
+  isTableBubbleInit = true;
 }
 
 document.getElementById('font-select').addEventListener('sl-change', function (e) {
