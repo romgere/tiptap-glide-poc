@@ -1,37 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/themes/light.css"
-    />
-    <script
-      type="module"
-      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/shoelace-autoloader.js"
-    ></script>
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div class="menu">
-
-      <sl-button size="small" id="bold-btn">
-        <sl-icon name="type-bold" label="Settings"></sl-icon>
-      </sl-button>
-
-      <button id="italic-btn">Italic</button>
-      <button id="strike-btn">Strike</button>
-      <button id="wc-btn">WC</button>
-
-      <sl-button-group label="Alignment">
-        <sl-button size="small">Left</sl-button>
-        <sl-button size="small">Center</sl-button>
-        <sl-button size="small">Right</sl-button>
-      </sl-button-group>
-    </div>
-    <div class="element"></div>
-    <script type="module" src="/main.js"></script>
-  </body>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" type="image/svg+xml" href="/vite.svg">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/themes/light.css">
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/shoelace-autoloader.js"></script>
+        <title>Vite App</title>
+    </head>
+    <body>
+        <div class="menu toolbar">
+            <sl-button id="bold-btn">
+                <sl-icon name="type-bold" label="Settings"></sl-icon>
+            </sl-button>
+            <sl-button id="italic-btn">
+                <sl-icon name="type-italic" label="Settings"></sl-icon>
+            </sl-button>
+            <sl-button id="strike-btn">
+                <sl-icon name="type-strikethrough" label="Settings"></sl-icon>
+            </sl-button>
+            <sl-dropdown>
+                <sl-button slot="trigger" caret>
+                    <sl-icon name="paragraph"></sl-icon>
+                </sl-button>
+                <sl-menu id="typo-menu">
+                    <sl-menu-item id="typo-paragraph" value="p" type="checkbox">paragraph</sl-menu-item>
+                    <sl-divider></sl-divider>
+                    <sl-menu-item id="typo-h1" value="1" type="checkbox">h1</sl-menu-item>
+                    <sl-menu-item id="typo-h2" value="2" type="checkbox">h2</sl-menu-item>
+                    <sl-menu-item id="typo-h3" value="3" type="checkbox">h3</sl-menu-item>
+                    <sl-menu-item id="typo-h4" value="4" type="checkbox">h4</sl-menu-item>
+                    <sl-menu-item id="typo-h5" value="5" type="checkbox">h5</sl-menu-item>
+                    <sl-menu-item id="typo-h6" value="6" type="checkbox">h6</sl-menu-item>
+                </sl-menu>
+            </sl-dropdown>
+            <sl-button id="code-btn">
+                <sl-icon name="code" label="Code"></sl-icon>
+            </sl-button>
+            <sl-button id="ul-btn">
+                <sl-icon name="list-ul" label="Bullet list"></sl-icon>
+            </sl-button>
+            <sl-button id="ol-btn">
+                <sl-icon name="list-ol" label="Numbered list"></sl-icon>
+            </sl-button>
+            <sl-button id="undo-btn">
+                <sl-icon name="arrow-counterclockwise" label="Undo"></sl-icon>
+            </sl-button>
+            <sl-button id="redo-btn">
+                <sl-icon name="arrow-clockwise" label="Redo"></sl-icon>
+            </sl-button>
+            <sl-dropdown>
+                <sl-button id="color-picker-btn" slot="trigger" caret>
+                    <sl-icon name="palette"></sl-icon>
+                </sl-button>
+                <sl-color-picker
+                    id="color-picker"
+                    default-value="#000000"
+                    inline
+                    label="Select a color"
+                ></sl-color-picker>
+            </sl-dropdown>
+            <sl-button-group label="Alignment">
+                <sl-button id="align-left-btn">Left</sl-button>
+                <sl-button id="align-center-btn">Center</sl-button>
+                <sl-button id="align-right-btn">Right</sl-button>
+            </sl-button-group>
+            <sl-button id="wc-btn">
+                <sl-icon name="bar-chart-line"></sl-icon>
+            </sl-button>
+        </div>
+        <div class="bubblemenu1 toolbar">
+            <sl-button id="bold-b-btn">
+                <sl-icon name="type-bold" label="Settings"></sl-icon>
+            </sl-button>
+            <sl-button id="italic-b-btn">
+                <sl-icon name="type-italic" label="Settings"></sl-icon>
+            </sl-button>
+            <sl-button id="strike-b-btn">
+                <sl-icon name="type-strikethrough" label="Settings"></sl-icon>
+            </sl-button>
+        </div>
+        <div class="bubblemenu2 toolbar">
+            <sl-button class="plop">
+                <sl-icon name="crop" label="Settings"></sl-icon>
+            </sl-button>
+            <sl-button class="plop">
+                <sl-icon name="aspect-ratio" label="Settings"></sl-icon>
+            </sl-button>
+            <sl-button class="plop">
+                <sl-icon name="arrow-clockwise" label="Settings"></sl-icon>
+            </sl-button>
+            <sl-button class="plop">
+                <sl-icon name="arrow-counterclockwise" label="Settings"></sl-icon>
+            </sl-button>
+            <div>
+                <small>Some contextual  menu item for image...</small>
+            </div>
+        </div>
+        <div class="bubblemenu3 toolbar">
+            <sl-button class="plop">
+                <sl-icon name="gear-wide" label="Settings"></sl-icon>
+            </sl-button>
+            <sl-button class="plop">
+                <sl-icon name="trash" label="Settings"></sl-icon>
+            </sl-button>
+            <div>
+                <small>Some contextual  menu item for webcomponent...</small>
+            </div>
+        </div>
+        <div class="element"></div>
+        <sl-dialog id="wc-modal" label="Web component settings" class="dialog-overview">
+            <sl-input id="foo-input" label="Foo value"></sl-input>
+            <sl-input id="bar-input" label="Bar value"></sl-input>
+            <sl-button id="modal-btn-cancel" slot="footer">Cancel</sl-button>
+            <sl-button id="modal-btn-ok" slot="footer" variant="primary">Insert</sl-button>
+        </sl-dialog>
+        <script type="module" src="/main.js"></script>
+    </body>
 </html>

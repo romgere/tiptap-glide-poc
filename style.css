@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family:  Helvetica, Arial, sans-serif;
   line-height: 1.5;
 
   font-synthesis: none;
@@ -17,13 +17,18 @@
   margin-top: 16px;
 }
 
-.element > div {
+.element > div, .toolbar {
   padding: 5px;
   margin: 5px;
-  border: 1px solid gray;
+  border: 1px solid #d4d4d8;
   border-radius: 4px;
+  background-color:white;
 }
 
 [data-my-custom-element].ProseMirror-selectednode {
   border: 1px solid blue;
+}
+
+.element img {
+  max-width: 500px;
 }
