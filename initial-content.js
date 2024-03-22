@@ -13,6 +13,7 @@ const content = `<h1 style="text-align: center">Familiar. Fully-featured. Mobile
 <h2>Some title</h2>
 <div data-my-custom-element><my-custom-element foo="this could be" bar="a graph or chart widget"></my-custom-element></div>
 <p><span style="font-family: cursive">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer magna sem, volutpat at libero non, blandit posuere eros. Sed mollis vel metus sed eleifend. Sed nec lacus non felis eleifend ultricies eu ut ipsum. Nam vitae ultricies nibh. Phasellus suscipit vestibulum nibh quis congue. Morbi tempus, enim in semper pretium, nisi nisl sagittis lectus, dictum dapibus quam tellus hendrerit est. </span></p>
+
 <p>To be continue...</p>`;
 
 export default content;
