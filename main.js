@@ -6,7 +6,8 @@ import { Color } from '@tiptap/extension-color'
 import TextStyle from '@tiptap/extension-text-style'
 import TextAlign from '@tiptap/extension-text-align'
 import content from './initial-content.js';
-import Image from '@tiptap/extension-image'
+// import Image from '@tiptap/extension-image'
+import Image from './image-node.js'
 import FileHandler from './file-handler-plugins.js';
 import BubbleMenu from '@tiptap/extension-bubble-menu'
 import FontFamily from '@tiptap/extension-font-family'
@@ -23,7 +24,7 @@ const editor = new Editor({
     TextStyle,
     FontFamily,
     TextAlign.configure({
-      types: ['heading', 'paragraph'],
+      types: ['heading', 'paragraph', 'image'],
     }),
     WCNode,
     Image,

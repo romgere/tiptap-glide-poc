@@ -1,5 +1,5 @@
 const content = `<h1 style="text-align: center">Familiar. Fully-featured. Mobile optimized.</h1>
-<img src="https://it.lbl.gov/wp-content/uploads/sites/18/2023/02/crowdstrike-logo.png" alt="TinyMCE demo image" width="316">
+<img style="text-align: center" src="https://it.lbl.gov/wp-content/uploads/sites/18/2023/02/crowdstrike-logo.png" alt="TinyMCE demo image" width="316">
 <p>With an open source Core, uncomplicated low-code plug-in structure and additional Premium add-ons, tiptap scales with your app as you grow. That&rsquo;s why it&rsquo;s the WYSIWYG editor-of-choice for 1.5M+ developers when they need to build and ship products faster.</p>
 <ul>
 <li>A <strong>basic</strong> editor</li>
