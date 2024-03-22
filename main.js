@@ -92,7 +92,9 @@ const editor = new Editor({
       tippyOptions: {
         onShown: attachBubbleButtonEvent
       },
-      shouldShow: ({ editor}) =>  !(editor.isActive('wc') || editor.isActive('image') || editor.isActive('table')),
+      shouldShow: ({ editor, view, state, oldState, from, to}) =>  {
+        return !(editor.isActive('wc') || editor.isActive('image') || (editor.isActive('table') && from === to))
+      },
     }),
     BubbleMenu.configure({
       element: document.querySelector('.bubblemenu2'),
@@ -104,7 +106,9 @@ const editor = new Editor({
     }),
     BubbleMenu.configure({
       element: document.querySelector('.bubblemenu4'),
-      shouldShow: ({ editor}) =>  editor.isActive('table'),
+      shouldShow: ({ editor, view, state, oldState, from, to}) =>  {
+        return editor.isActive('table') && from === to;
+      },
       tippyOptions: {
         onShown: attachTableBubbleMenu
       },      
@@ -176,9 +180,6 @@ function updateToolBarState(editor) {
   const fontSelect = document.getElementById('font-select')
   const fontFamily = editor.getAttributes('textStyle').fontFamily ?? null;
   fontSelect.value = fontFamily ? fontFamily.replace('_', ' ') : 'default';
-  
-
-  // editor.isActive('textStyle', { fontFamily: 'cursive' }) }
 }
 
 document.getElementById('bold-btn').addEventListener('click', function () {
