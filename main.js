@@ -225,8 +225,8 @@ document.getElementById('wc-btn').addEventListener('click', function () {
 
     dialogOK.innerText = 'Update';
   } else {
-    document.getElementById('foo-input').value = 'Foo value';
-    document.getElementById('bar-input').value = 'Bar value';
+    document.getElementById('foo-input').value = '';
+    document.getElementById('bar-input').value = '';
     dialogOK.innerText = 'Insert';
   }
   dialog.show();
