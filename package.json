@@ -9,7 +9,6 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "vite": "^5.2.0",
     "@tiptap/core": "^2.0.0",
     "@tiptap/extension-bubble-menu": "^2.2.4",
     "@tiptap/extension-character-count": "^2.2.4",
@@ -47,8 +46,12 @@
     "prosemirror-model": "^1.7.1",
     "prosemirror-state": "^1.2.3",
     "prosemirror-view": "^1.9.10",
+    "vite": "^5.2.0",
     "y-prosemirror": "^1.2.1",
     "y-protocols": "^1.0.1",
     "yjs": "^13.5.38"
+  },
+  "dependencies": {
+    "typescript": "^5.4.4"
   }
 }

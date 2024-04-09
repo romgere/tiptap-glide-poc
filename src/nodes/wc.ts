@@ -1,6 +1,17 @@
 //Inpired from https://github.com/ueberdosis/tiptap/blob/main/packages/extension-youtube/src/youtube.ts
 import { Node } from '@tiptap/core';
 
+declare module "@tiptap/core" {
+  interface Commands<ReturnType> {
+    wc: {
+      /**
+       * Set media
+       */
+      addCustomWC: (options: { foo?: string, bar?: string }) => ReturnType;
+    };
+  }
+}
+
 const WC = Node.create({
   name: 'wc',
 
