@@ -1,30 +1,14 @@
 import './style.css';
+import './page.css';
 
 import './utils/wc.js';
 import content from './utils/initial-content.js';
 
 import { Editor } from '@tiptap/core';
-import StarterKit from '@tiptap/starter-kit';
-import { Color } from '@tiptap/extension-color'
-import TextStyle from '@tiptap/extension-text-style'
-import TextAlign from '@tiptap/extension-text-align'
+
+import getExtensions from './utils/get-extensions.js';
 import BubbleMenu from '@tiptap/extension-bubble-menu'
-import FontFamily from '@tiptap/extension-font-family'
-import TaskItem from '@tiptap/extension-task-item'
-import TaskList from '@tiptap/extension-task-list'
-import Table from '@tiptap/extension-table'
-import TableCell from '@tiptap/extension-table-cell'
-import TableHeader from '@tiptap/extension-table-header'
-import TableRow from '@tiptap/extension-table-row'
-import Gapcursor from '@tiptap/extension-gapcursor'
-
-// Custom Plugins
 import FileHandler from './extensions/file-handler.js';
-
-// Custom Nodes
-import Image from './nodes/image.js'
-import WCNode from './nodes/wc.js';
-
 
 import type { Level } from '@tiptap/extension-heading'
 
@@ -45,24 +29,8 @@ if (!bubblemenu1 || !bubblemenu2 || !bubblemenu3 || !bubblemenu4 ) {
 const editor = new Editor({
   element: editorDiv,
   extensions: [
-    StarterKit,
-    Color,
-    TextStyle,
-    FontFamily,
-    TextAlign.configure({
-      types: ['heading', 'paragraph', 'image'],
-    }),
-    WCNode,
-    Image,
-    TaskItem,
-    TaskList,
-    Table.configure({
-      resizable: true,
-    }),
-    TableCell,
-    TableHeader,
-    TableRow,
-    Gapcursor,
+    ...getExtensions(),
+
     FileHandler.configure({
       allowedMimeTypes: [
         'image/jpeg',
@@ -133,9 +101,6 @@ const editor = new Editor({
         onShown: attachTableBubbleMenu
       },      
     }),
-
-    
-
   ],
   content,
   onUpdate: ({ editor }) => updateToolBarState(editor),
@@ -222,7 +187,7 @@ document.getElementById('typo-menu')?.addEventListener('sl-select', function(eve
   if( value === 'p') {
     editor.chain().focus().setParagraph().focus().run()
   } else {
-    editor.chain().focus().toggleHeading({ level: (parseInt(value) as Level) }).focus().run();
+    editor.chain().focus().toggleHeading({ level: 1 }).focus().run();
   }
 });
 

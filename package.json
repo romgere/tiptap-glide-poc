@@ -52,6 +52,7 @@
     "yjs": "^13.5.38"
   },
   "dependencies": {
+    "@tiptap/html": "^2.3.0",
     "typescript": "^5.4.4"
   }
 }
